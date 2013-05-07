@@ -1,6 +1,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <errno.h>
+#include "fcntl_compat.h"
 
 /* Since open() and close() are re-defined in nocache.c, it's not
  * possible to include <fcntl.h> there. So we do it here. */
