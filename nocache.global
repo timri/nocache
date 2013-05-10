@@ -4,9 +4,16 @@ libnocache="$BASEDIR/lib/nocache.so"
 
 export LD_PRELOAD="$libnocache $LD_PRELOAD"
 
-if [ "$1" = "-n" ]; then
-    export NOCACHE_NR_FADVISE="$2"
-    shift 2
+BIN_NAME=$(basename "$0")
+if [ "$BIN_NAME" != "nocache" ]; then
+    PROG=`which -a "$BIN_NAME" | grep -vF "$0"`
+else
+    if [ "$1" = "-n" ]; then
+	export NOCACHE_NR_FADVISE="$2"
+	shift 2
+    fi
+    PROG="$1"
+    shift
 fi
 
-exec "$@"
+exec "$PROG" "$@"
