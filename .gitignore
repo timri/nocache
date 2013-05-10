@@ -1,0 +1,4 @@
+cachedel
+cachestats
+*.o
+nocache.so

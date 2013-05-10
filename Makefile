@@ -18,6 +18,8 @@ nocache.so: nocache.o fcntl_helpers.o
 install: all
 	install -m 0644 nocache.so /usr/local/lib
 	install -m 0755 nocache.global /usr/local/bin/nocache
+	install -m 0755 cachestats /usr/local/bin/
+	install -m 0755 cachedel /usr/local/bin
 
 test:
 	cd t; prove -v .
